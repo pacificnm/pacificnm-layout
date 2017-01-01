@@ -1,0 +1,80 @@
+<?php
+/**
+* Pacific NM (https://www.pacificnm.com)
+*
+* @link      https://github.com/pacificnm/pnm for the canonical source repository
+* @copyright Copyright (c) 20011-2016 Pacific NM USA Inc. (https://www.pacificnm.com)
+* @license
+*/
+?>
+<div class="row">
+	<div class="col-xs-12">
+		<div class="box box-primary">
+			<div class="box-header with-border">
+				<h3 class="box-title">
+					<i class="<?php echo $this->layout()->pageIcon; ?>" aria-hidden="true"></i>
+					<?php echo $this->translate($this->layout()->pageTitle); ?> 
+					<small><?php echo $this->translate("Page"); ?>: <?php echo $this->page; ?></small>
+				</h3>
+				<div class="box-tools">
+					<?php echo $this->searchButton("layout-search"); ?>
+					
+					<?php echo $this->createButton("layout-create"); ?>
+				</div>
+			</div> 
+            <?php if($this->paginator->count() == 0): ?>
+			<div class="box-body">
+				<div class="alert alert-info">
+					<p>
+						<i class="fa fa-info-circle" aria-hidden="true"></i> 
+						<?php echo $this->translate("No entities found"); ?>
+					</p>
+				</div>
+			</div>
+			<?php else: ?>
+			<div class="box-body  no-padding">
+				<div class="row">
+					<div class="col-xs-12">
+						<table class="table table-bordered table-hover table-striped table-condensed">
+							<thead>
+								<tr>
+                                    <th><?php echo $this->translate("Id"); ?></th>
+                                    <th><?php echo $this->translate("Name"); ?></th>
+                                    <th><?php echo $this->translate("File"); ?></th>
+                                    <th><?php echo $this->translate("Active"); ?>
+                                </tr>
+							</thead>
+							<tbody>
+							<?php foreach($this->paginator as $entity): ?>
+								<tr>
+									<td><?php echo $entity->getLayoutId(); ?></td>
+									<td><a href="<?php echo $this->url('layout-view', array("id" => $entity->getLayoutId())); ?>" title="<?php echo $entity->getLayoutName(); ?>">
+											<?php echo $entity->getLayoutName(); ?>
+										</a>
+									</td>
+									<td><?php echo $entity->getLayoutFile(); ?></td>
+									<td><?php echo ($entity->getLayoutActive() == 1 ? $this->translate("Yes") : $this->translate("No")); ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-xs-12 text-center">
+						<?php echo $this->Paginator(
+							$this->itemCountPerPage, 
+							$this->itemCount, 
+							$this->pageCount, 
+                            $this->page, 
+                            $this->routeParams,
+                            $this->queryParams);
+                        ?>
+					</div>
+				</div>
+			</div>
+			<?php endif;?>
+		</div>
+	</div>
+</div>

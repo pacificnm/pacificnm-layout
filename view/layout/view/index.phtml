@@ -1,0 +1,45 @@
+<?php
+/**
+* Pacific NM (https://www.pacificnm.com)
+*
+* @link      https://github.com/pacificnm/pnm for the canonical source repository
+* @copyright Copyright (c) 20011-2016 Pacific NM USA Inc. (https://www.pacificnm.com)
+* @license
+*/
+?>
+<div class="row">
+	<div class="col-xs-12">
+		<div class="box box-primary">
+			<div class="box-header with-border">
+				<h3 class="box-title">
+					<i class="<?php echo $this->layout()->pageIcon; ?>" aria-hidden="true"></i>
+					<?php echo $this->translate($this->layout()->pageTitle); ?> 
+					<small><?php echo $this->translate("View"); ?></small>
+				</h3>
+				<div class="box-tools">
+					<?php echo $this->deleteButton("layout-delete", array("id" => $this->entity->getLayoutId())); ?>
+					
+					<?php echo $this->updateButton("layout-update", array("id" => $this->entity->getLayoutId())); ?>
+				</div>
+			</div>
+			<div class="box-body box-profile">
+                <h3 class="profile-username text-center">
+                	<?php echo $this->entity->getLayoutName(); ?>
+                </h3>
+                <p class="text-muted text-center">
+                	<?php echo $this->entity->getLayoutFile(); ?>
+                </p>
+                <ul class="list-group list-group-unbordered">
+                <li class="list-group-item">
+                    	<b><?php echo $this->translate("Layout Id"); ?>:</b>
+                    	<?php echo $this->entity->getLayoutId();?>
+                    </li>
+                    <li class="list-group-item">
+                    	<b><?php echo $this->translate("Active"); ?>:</b>
+                    	<?php echo ($this->entity->getLayoutActive() == 1 ? $this->translate("Yes") : $this->translate("No"));?>
+                    </li>
+                </ul>
+            </div>
+		</div>
+	</div>
+</div>
