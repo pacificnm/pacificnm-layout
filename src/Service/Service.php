@@ -39,6 +39,16 @@ class Service implements ServiceInterface
     {
         return $this->mapper->get($id);
     }
+    
+    /**
+     * 
+     * {@inheritDoc}
+     * @see \Pacificnm\Layout\Service\ServiceInterface::getLayoutByName()
+     */
+    public function getLayoutByName($layoutName)
+    {
+        return $this->mapper->getLayoutByName($layoutName);
+    }
 
     /**
      * {@inheritDoc}

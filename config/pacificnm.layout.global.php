@@ -3,7 +3,7 @@ return array(
     'module' => array(
         'Layout' => array(
             'name' => 'Layout',
-            'version' => '1.0.0',
+            'version' => '1.0.1',
             'install' => array(
                 'require' => array(),
                 'sql' => 'sql/layout.sql'
